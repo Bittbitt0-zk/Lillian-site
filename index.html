@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For You 💘</title>
+  <style>
+    :root{
+      --bg:#0b0b12;
+      --card:#121225cc;
+      --text:#f4f4ff;
+      --muted:#b9b9d6;
+      --accent:#ff4d8d;
+      --accent2:#7c5cff;
+      --line:#ffffff14;
+      --shadow: 0 20px 60px #00000055;
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% 10%, #2b1144 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 80% 20%, #1a2a6c 0%, transparent 60%),
+                  radial-gradient(1000px 700px at 50% 90%, #3a0f1f 0%, transparent 60%),
+                  var(--bg);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .heart{
+      width:44px;height:44px;border-radius:14px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      box-shadow: 0 12px 30px #ff4d8d33;
+      display:grid; place-items:center;
+      cursor:pointer;
+      user-select:none;
+    }
+    .heart span{font-size:22px}
+    h1{font-size: 22px; margin:0; letter-spacing:.2px}
+    .subtitle{color:var(--muted); margin:4px 0 0; font-size: 13px}
+    .pill{
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius: 999px;
+      background: #0f0f1a88;
+      font-size: 13px;
+      color: var(--muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .card .top{
+      padding:18px 18px 0;
+    }
+    .card h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .card p{margin:10px 0 0; color:var(--muted); line-height:1.5}
+    .content{padding:18px;}
+    .divider{height:1px;background:var(--line); margin:16px 0}
+
+    .hero{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      background: linear-gradient(180deg, #ffffff10, transparent);
+    }
+    .bigline{
+      font-size: 26px;
+      line-height: 1.15;
+      margin:0;
+    }
+    .bigline b{
+      background: linear-gradient(135deg, #fff, #ffd1e2);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 6px;
+    }
+    button{
+      border:1px solid var(--line);
+      background:#0f0f1a88;
+      color: var(--text);
+      padding:10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      transition: transform .08s ease, border-color .2s ease;
+      font-weight:600;
+    }
+    button:hover{transform: translateY(-1px); border-color:#ffffff2a;}
+    .primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: none;
+      box-shadow: 0 12px 30px #7c5cff33;
+    }
+
+    .countdown{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+      margin-top: 6px;
+    }
+    .timebox{
+      border:1px solid var(--line);
+      background:#0f0f1a66;
+      border-radius: 16px;
+      padding: 12px 10px;
+      text-align:center;
+    }
+    .timebox .num{font-size: 22px; font-weight:800}
+    .timebox .lbl{font-size: 12px; color: var(--muted); margin-top: 2px}
+
+    .notes{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 520px){ .notes{grid-template-columns: 1fr;} }
+
+    .note{
+      border:1px solid var(--line);
+      background:#0f0f1a66;
+      border-radius: 18px;
+      padding: 12px;
+      position:relative;
+      min-height: 92px;
+    }
+    .note small{color:var(--muted)}
+    .note b{display:block; margin-top:6px}
+    .tag{
+      position:absolute;
+      top:10px; right:10px;
+      font-size: 11px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background:#ffffff10;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .openwhen{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .letter{
+      border:1px solid var(--line);
+      background:#0f0f1a66;
+      border-radius: 18px;
+      padding: 12px;
+    }
+    .letter summary{
+      cursor:pointer;
+      font-weight:800;
+    }
+    .letter p{margin:10px 0 0; color: var(--muted); line-height:1.5}
+
+    .footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      opacity:.9;
+    }
+
+    /* floating hearts */
+    .floaty{
+      position: fixed;
+      inset: 0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index: 0;
+    }
+    .bubble{
+      position:absolute;
+      bottom:-40px;
+      font-size: 18px;
+      opacity: .55;
+      animation: rise linear forwards;
+      filter: drop-shadow(0 10px 20px #ff4d8d22);
+    }
+    @keyframes rise{
+      to{
+        transform: translateY(-120vh) translateX(var(--drift));
+        opacity: 0;
+      }
+    }
+    .card, header{position:relative; z-index: 1;}
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background:#0f0f1add;
+      border:1px solid var(--line);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index: 5;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+<body>
+  <div class="floaty" id="floaty"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="heart" id="easterEgg" title="click me">
+          <span>💘</span>
+        </div>
+        <div>
+          <h1 id="title">For Lilian</h1>
+          <div class="subtitle" id="subtitle">Made by zk — long distance, same heart.</div>
+        </div>
+      </div>
+      <div class="pill" id="pill">Status: connected ✅</div>
+    </header>
+
+    <div class="grid">
+      <!-- Left: Hero -->
+      <section class="card">
+        <div class="hero">
+          <p class="bigline">
+            Hey <b id="herName">Lilian</b>,<br/>
+            even if we’re far… I’m still choosing you, every day.
+          </p>
+
+          <div>
+            <div style="color:var(--muted); font-size:13px; margin-bottom:8px;">
+              Countdown to our next meet:
+            </div>
+            <div class="countdown" id="countdown">
+              <div class="timebox"><div class="num" id="d">--</div><div class="lbl">days</div></div>
+              <div class="timebox"><div class="num" id="h">--</div><div class="lbl">hours</div></div>
+              <div class="timebox"><div class="num" id="m">--</div><div class="lbl">mins</div></div>
+              <div class="timebox"><div class="num" id="s">--</div><div class="lbl">secs</div></div>
+            </div>
+          </div>
+
+          <div class="cta">
+            <button class="primary" id="spawnHearts">Send you hearts</button>
+            <button id="copyLink">Copy this page link</button>
+            <button id="randomNote">Give me a love note</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="notes" id="notes">
+            <!-- injected -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Right: Open When + Settings -->
+      <aside class="card">
+        <div class="top">
+          <h2>Open when… 📩</h2>
+          <p>Little letters for different moods. Click to open.</p>
+        </div>
+        <div class="content">
+          <div class="openwhen">
+            <details class="letter">
+              <summary>you miss me</summary>
+              <p>
+                I miss you too. Like… stupid amount. But I’m proud of us.
+                We’re building something real, not just vibes. And I’m not going anywhere.
+              </p>
+            </details>
+
+            <details class="letter">
+              <summary>you’re stressed</summary>
+              <p>
+                Breathe. Drink water. One task at a time.
+                I believe in you so hard it’s actually unfair.
+                If you need me, call me — I’m your safe place.
+              </p>
+            </details>
+
+            <details class="letter">
+              <summary>you want to smile</summary>
+              <p>
+                If love was a bug, I’d never patch it.
+                Because being obsessed with you is my favorite feature.
+              </p>
+            </details>
+
+            <details class="letter">
+              <summary>it’s Valentine’s</summary>
+              <p>
+                Happy Valentine’s, my love. Thank you for being you.
+                I’ll keep choosing you — today, tomorrow, and all the versions of us.
+              </p>
+            </details>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2 style="margin:0 0 10px;">Customize ✍️</h2>
+          <p style="margin:0 0 12px;">Change names + meeting date (stored in your browser).</p>
+
+          <div style="display:grid; gap:10px;">
+            <label style="font-size:13px; color:var(--muted);">
+              Her name
+              <input id="nameInput" placeholder="Lilian" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
+            </label>
+
+            <label style="font-size:13px; color:var(--muted);">
+              Your name
+              <input id="yourInput" placeholder="zk" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
+            </label>
+
+            <label style="font-size:13px; color:var(--muted);">
+              Next meet date/time (local)
+              <input id="dateInput" type="datetime-local" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
+            </label>
+
+            <button class="primary" id="save">Save</button>
+          </div>
+
+          <div class="footer">
+            Tip: click the 💘 icon 7 times 😉
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // ====== DEFAULTS (edit these if you want) ======
+    const DEFAULTS = {
+      herName: "Lilian",
+      yourName: "zk",
+      // Set this to your next meet time (example below).
+      // Format: "YYYY-MM-DDTHH:MM"
+      meetAt: "" // leave empty to set via UI
+    };
+
+    // ====== LOVE NOTES ======
+    const loveNotes = [
+      { tag: "tiny", text: "I’m proud of you. Like… genuinely. You’re doing so well." },
+      { tag: "cute", text: "If I could teleport, I’d be hugging you already." },
+      { tag: "real", text: "Distance is hard, but you’re worth it. Always." },
+      { tag: "nerdy", text: "Even when the Wi-Fi drops, my love packet never fails delivery." },
+      { tag: "soft", text: "I just want you safe, happy, and loved. That’s it." },
+      { tag: "chaos", text: "I’m literally obsessed with you. Respectfully." }
+    ];
+
+    // ====== STORAGE ======
+    const KEY = "valentine_site_v1";
+    const saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    const state = { ...DEFAULTS, ...(saved || {}) };
+
+    // ====== ELEMENTS ======
+    const herNameEl = document.getElementById("herName");
+    const titleEl = document.getElementById("title");
+    const subtitleEl = document.getElementById("subtitle");
+    const pillEl = document.getElementById("pill");
+    const notesEl = document.getElementById("notes");
+
+    const dEl = document.getElementById("d");
+    const hEl = document.getElementById("h");
+    const mEl = document.getElementById("m");
+    const sEl = document.getElementById("s");
+
+    const nameInput = document.getElementById("nameInput");
+    const yourInput = document.getElementById("yourInput");
+    const dateInput = document.getElementById("dateInput");
+
+    const saveBtn = document.getElementById("save");
+    const spawnBtn = document.getElementById("spawnHearts");
+    const randomBtn = document.getElementById("randomNote");
+    const copyBtn = document.getElementById("copyLink");
+    const eggBtn = document.getElementById("easterEgg");
+
+    const floaty = document.getElementById("floaty");
+    const toast = document.getElementById("toast");
+
+    // ====== INIT UI ======
+    function renderHeader(){
+      herNameEl.textContent = state.herName;
+      titleEl.textContent = `For ${state.herName}`;
+      subtitleEl.textContent = `Made by ${state.yourName} — long distance, same heart.`;
+      pillEl.textContent = "Status: connected ✅";
+      nameInput.value = state.herName;
+      yourInput.value = state.yourName;
+      if(state.meetAt) dateInput.value = state.meetAt;
+    }
+
+    function renderNotes(){
+      notesEl.innerHTML = "";
+      loveNotes.slice(0,4).forEach((n, idx) => {
+        const div = document.createElement("div");
+        div.className = "note";
+        div.innerHTML = `
+          <div class="tag">${n.tag}</div>
+          <small>Note #${idx+1}</small>
+          <b>${n.text}</b>
+        `;
+        notesEl.appendChild(div);
+      });
+    }
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.style.display = "none", 2200);
+    }
+
+    // ====== COUNTDOWN ======
+    function getMeetDate(){
+      if(!state.meetAt) return null;
+      const d = new Date(state.meetAt);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function tick(){
+      const target = getMeetDate();
+      if(!target){
+        dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = "--";
+        pillEl.textContent = "Set next meet date 💡";
+        return;
+      }
+      const now = new Date();
+      let diff = target.getTime() - now.getTime();
+      if(diff <= 0){
+        dEl.textContent = "0"; hEl.textContent = "0"; mEl.textContent = "0"; sEl.textContent = "0";
+        pillEl.textContent = "Status: reunion time 🥹✅";
+        return;
+      }
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hours = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+
+      dEl.textContent = days;
+      hEl.textContent = hours;
+      mEl.textContent = mins;
+      sEl.textContent = secs;
+    }
+
+    setInterval(tick, 1000);
+
+    // ====== FLOATING HEARTS ======
+    function spawnHearts(count=18){
+      const emojis = ["💘","💖","💗","💞","💓","✨"];
+      for(let i=0;i<count;i++){
+        const b = document.createElement("div");
+        b.className = "bubble";
+        b.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        const left = Math.random()*100;
+        const dur = 3 + Math.random()*3.5;
+        const drift = (Math.random()*120 - 60).toFixed(0) + "px";
+        b.style.left = left + "vw";
+        b.style.animationDuration = dur + "s";
+        b.style.setProperty("--drift", drift);
+        b.style.fontSize = (16 + Math.random()*14).toFixed(0) + "px";
+        floaty.appendChild(b);
+        setTimeout(()=> b.remove(), (dur*1000)+200);
+      }
+    }
+
+    // ====== EVENTS ======
+    saveBtn.addEventListener("click", () => {
+      state.herName = nameInput.value.trim() || DEFAULTS.herName;
+      state.yourName = yourInput.value.trim() || DEFAULTS.yourName;
+      state.meetAt = dateInput.value || "";
+      localStorage.setItem(KEY, JSON.stringify(state));
+      renderHeader();
+      tick();
+      showToast("Saved ✅");
+      spawnHearts(10);
+    });
+
+    spawnBtn.addEventListener("click", () => {
+      spawnHearts(26);
+      showToast("Hearts sent 💘");
+    });
+
+    randomBtn.addEventListener("click", () => {
+      const n = loveNotes[Math.floor(Math.random()*loveNotes.length)];
+      showToast(n.text);
+      spawnHearts(10);
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(location.href);
+        showToast("Link copied 🔗");
+      }catch{
+        showToast("Copy failed — just copy URL bar 😭");
+      }
+    });
+
+    // Easter egg: click 7 times
+    let eggCount = 0;
+    eggBtn.addEventListener("click", () => {
+      eggCount++;
+      spawnHearts(8);
+      if(eggCount === 7){
+        showToast("Secret unlocked: I love you more than sleep. And I'm a CS student.");
+        eggCount = 0;
+      }
+    });
+
+    // ====== START ======
+    renderHeader();
+    renderNotes();
+    tick();
+    // A little welcome
+    setTimeout(()=> showToast("Open this when you miss me 💌"), 700);
+  </script>
+</body>
+</html>
