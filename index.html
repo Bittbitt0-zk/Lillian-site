@@ -256,7 +256,7 @@
           <span>💘</span>
         </div>
         <div>
-          <h1 id="title">For Lilian</h1>
+          <h1 id="title">For Lillian</h1>
           <div class="subtitle" id="subtitle">Made by zk — long distance, same heart.</div>
         </div>
       </div>
@@ -268,9 +268,15 @@
       <section class="card">
         <div class="hero">
           <p class="bigline">
-            Hey <b id="herName">Lilian</b>,<br/>
-            even if we’re far… I’m still choosing you, every day.
+            <b id="herName">Lillian</b>,<br/>
+            ถึงระยะทางมันจะไกล… แต่ใจเค้ายังเลือกเต็งเหมือนเดิม ทุกวันไม่มีพักเลยน้าา~~💗
           </p>
+
+          <img src="lilian.jpg" alt="My love"
+            style="width:180px; height:180px; object-fit:cover;
+            border-radius:50%; margin-top:15px;
+            border:3px solid #ffffff30;
+            box-shadow:0 15px 40px #ff4d8d40;">
 
           <div>
             <div style="color:var(--muted); font-size:13px; margin-bottom:8px;">
@@ -309,33 +315,30 @@
             <details class="letter">
               <summary>you miss me</summary>
               <p>
-                I miss you too. Like… stupid amount. But I’m proud of us.
-                We’re building something real, not just vibes. And I’m not going anywhere.
+                คิดถึงเค้าหรอ?? 
+                งั้นก็โทรมาสิ ^^
               </p>
             </details>
 
             <details class="letter">
               <summary>you’re stressed</summary>
               <p>
-                Breathe. Drink water. One task at a time.
-                I believe in you so hard it’s actually unfair.
-                If you need me, call me — I’m your safe place.
+                หายใจลึก ๆ ก่อนน้า ดื่มน้ำด้วย ทำทีละอย่างพอ
+                เค้าเชื่อในตัวบี๋บี๋มากกว่าที่เต็งคิดอีก ถ้าเหนื่อยก็โทรมาได้เลย เค้าอยู่ข้างที่รักเสมอ😘
               </p>
             </details>
 
             <details class="letter">
               <summary>you want to smile</summary>
               <p>
-                If love was a bug, I’d never patch it.
-                Because being obsessed with you is my favorite feature.
+                ยิ้มหน่อยนะคนดื้อ เวลาบี๋บี๋โกรธหน้าเหมือนเป็ดเลยแป่รร^^
               </p>
             </details>
 
             <details class="letter">
               <summary>it’s Valentine’s</summary>
               <p>
-                Happy Valentine’s, my love. Thank you for being you.
-                I’ll keep choosing you — today, tomorrow, and all the versions of us.
+                สุขสันต์วันวาเลนไทน์นะบี๋บี๋ของเค้า~
               </p>
             </details>
           </div>
@@ -343,16 +346,14 @@
           <div class="divider"></div>
 
           <h2 style="margin:0 0 10px;">Customize ✍️</h2>
-          <p style="margin:0 0 12px;">Change names + meeting date (stored in your browser).</p>
-
           <div style="display:grid; gap:10px;">
             <label style="font-size:13px; color:var(--muted);">
-              Her name
-              <input id="nameInput" placeholder="Lilian" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
+              My Angle
+              <input id="nameInput" placeholder="Lillian" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
             </label>
 
             <label style="font-size:13px; color:var(--muted);">
-              Your name
+              Cool Guy
               <input id="yourInput" placeholder="zk" style="width:100%; margin-top:6px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:#0f0f1a66; color:var(--text);" />
             </label>
 
@@ -374,21 +375,29 @@
 
   <script>
     // ====== DEFAULTS (edit these if you want) ======
-    const DEFAULTS = {
-      herName: "Lilian",
-      yourName: "zk",
-      meetAt: "2026-02-27T19:45"
-    };
+    // const DEFAULTS = {
+    //   herName: "Lilian",
+    //   yourName: "zk",
+    //   // Set this to your next meet time (example below).
+    //   // Format: "YYYY-MM-DDTHH:MM"
+    //   meetAt: "" // leave empty to set via UI
+    // };
+
+        const DEFAULTS = {
+            herName: "Lillian",
+            yourName: "zk",
+            meetAt: "2026-02-27T19:45"
+        };
 
 
     // ====== LOVE NOTES ======
     const loveNotes = [
-      { tag: "tiny", text: "I’m proud of you. Like… genuinely. You’re doing so well." },
-      { tag: "cute", text: "If I could teleport, I’d be hugging you already." },
-      { tag: "real", text: "Distance is hard, but you’re worth it. Always." },
-      { tag: "nerdy", text: "Even when the Wi-Fi drops, my love packet never fails delivery." },
-      { tag: "soft", text: "I just want you safe, happy, and loved. That’s it." },
-      { tag: "chaos", text: "I’m literally obsessed with you. Respectfully." }
+      { tag: "😗", text: "อย่าลืมหายใจนะ คนดื้อของเค้า โลกมันไม่รีบขนาดนั้นหรอก 5555" },
+      { tag: "💕", text: "เหนื่อย, เศร้า, นอย, โกรธ, เหงา … ไม่ว่าที่รักจะรู้สึกยังไง แต่ขอให้รู้ไว้ว่าเค้าไม่ไปไหนน้า หยิบโทรศัพท์ขึ้นมาโทร หาเค้าได้ตลอดเลยย ^^" },
+      { tag: "💗", text: "จำไว้นะ ต่อให้บี๋บี๋งอแงแค่ไหน ก็ยังเป็นคนโปรดของเค้าอยู่ดี อิอิ" },
+      { tag: "😭", text: "ไม่รู้จะพูดไรดี อืม…… รักน้าคนดื้อ อ้ายย😭" },
+      { tag: "soft", text: "ก็บอกว่าร๊ากกก" },
+      { tag: "chaos", text: "ถ้าถามว่ารักแค่ จะตอบให้เลยว่า ลองเอาสายไปวนรอบโลกดู" }
     ];
 
     // ====== STORAGE ======
